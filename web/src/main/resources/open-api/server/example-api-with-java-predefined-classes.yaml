@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Payment service
+  description: Payment service
+  version: 1.0.0
+servers:
+  - url: 'https://'
+paths:
+  /cards:
+    get:
+      description: Find all cards
+      operationId: findCards
+      responses:
+        200:
+          description: Successful response
+    post:
+      description: Save new card
+      operationId: createNewCard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Card'
+      responses:
+        201:
+          description: Card created successfully
+components:
+  schemas:
+    Card:
+      type: object
+      properties:
+        cardNo:
+          type: string
+        expirationDate:
+          type: string
+          format: date-time
